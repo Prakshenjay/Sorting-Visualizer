@@ -1,0 +1,21 @@
+body
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container
+{
+    background-color: rgb(209, 226, 226);
+    height : 50vh;
+    width: 300px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar
+{
+    background-color: black;
+    margin : 1px
+}
