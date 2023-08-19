@@ -12,10 +12,10 @@ function createArray()
     {
         arr[i] = Math.random();
     }
-    dispalyBars();
+    displayBars();
 }
 
-function dispalyBars()
+function displayBars()
 {
     container.innerHTML = "";
 
@@ -26,27 +26,40 @@ function dispalyBars()
         bar.style.height = arr[i]*100 + "%";
         bar.style.width = containerWidth/n + "%";
 
+        bar.id = "bar" + i;
         bar.classList.add("bar");
 
         container.appendChild(bar);
     }
 }
 
-function bubbleSort()
+async function animateSwap(i , j)
 {
-    const swaps = [];
-    for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i - 1; j++)
+
+    setTimeout(function(){
+
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+        displayBars();
+
+    }, 50)
+
+}
+
+async function bubbleSort()
+{
+    for (let i = 0; i < n - 1; i++)
+    {
+        var j;
+        for (j = 0; j < n - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
-                const temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-                swaps.push([j,j+1]);
-
+                await animateSwap(j , j+1);
             }
         }
     }
-    dispalyBars();
+    displayBars();
 }
